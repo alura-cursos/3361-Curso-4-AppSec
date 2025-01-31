@@ -1,0 +1,23 @@
+name: TruffleHog Scan Test
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    trufflehog:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Checkout repository
+                uses: actions/checkout@v2
+
+            # -   name: Set up TruffleHog
+            #     run: |
+            #       docker pull trufflesecurity/trufflehog:latest
+
+            -   name: Run TruffleHog
+                run: |
+                  docker run --rm -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/danilocasabona/3361-Curso-4-AppSec
+            
