@@ -1,9 +1,9 @@
 name: TruffleHog Scan Test
 
 on:
-    push:
-        branches:
-            - feat/Trufflehog
+    # push:
+    #     branches:
+    #         - feat/Trufflehog
     pull_request:
         branches:
             - main
@@ -21,6 +21,7 @@ jobs:
             #       docker pull trufflesecurity/trufflehog:latest
 
             -   name: Run TruffleHog
+                continue-on-error: false  # Certifica que o workflow falha ao encontrar segredos
                 run: |
                   docker run --rm -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/danilocasabona/3361-Curso-4-AppSec
             
