@@ -22,5 +22,5 @@ jobs:
 
             -   name: Run TruffleHog
                 run: |
-                  docker run --rm -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/danilocasabona/3361-Curso-4-AppSec
+                  docker run --rm -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/danilocasabona/3361-Curso-4-AppSec
             
