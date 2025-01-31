@@ -1,6 +1,9 @@
 name: TruffleHog Scan Test
 
 on:
+    push:
+        branches:
+            - feat/Trufflehog
     pull_request:
         branches:
             - main
