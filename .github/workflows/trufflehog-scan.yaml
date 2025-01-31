@@ -24,4 +24,3 @@ jobs:
                 continue-on-error: false  # Certifica que o workflow falha ao encontrar segredos
                 run: |
                   docker run --rm -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/danilocasabona/3361-Curso-4-AppSec
-            

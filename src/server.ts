@@ -26,7 +26,7 @@ dotenv.config({ path: '.env' })
 const app = express()
 
 const corsOpts = {
-  origin: '*',
+  origin: false,
 
   methods: [
     'GET',

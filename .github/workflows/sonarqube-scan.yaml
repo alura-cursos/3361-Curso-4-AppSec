@@ -1,0 +1,32 @@
+name: Sonarqube Scan Test
+
+on:
+ pull_request:
+   branches:
+     - main
+
+jobs:
+ sonarqube:
+   runs-on: ubuntu-latest
+
+   steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install SonarScanner
+      run: |
+        wget https://caelum-online-public.s3.amazonaws.com/3361-desenvolvimento-seguro/sonar-scanner-cli-5.0.1.3006-linux.zip
+        unzip sonar-scanner-cli-5.0.1.3006-linux.zip
+    
+    - name: Run SonarScanner
+      run: |
+        ./sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -X \
+           -Dsonar.projectKey=VollMed \
+           -Dsonar.sources=. \
+           -Dsonar.host.url=$SONARQUBE_HOST \
+           -Dsonar.login=$SONARQUBE_TOKEN
+      env:
+        SONARQUBE_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+        SONARQUBE_HOST: ${{ secrets.SONARQUBE_HOST }}
+
+

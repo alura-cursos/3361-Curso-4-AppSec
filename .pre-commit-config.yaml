@@ -1,0 +1,9 @@
+repos:
+- repo: local
+  hooks:
+    - id: trufflehog
+      name: TruffleHog
+      description: Detect secrets in your data.
+      entry: bash -c 'docker run --name trufflehog -v "$(pwd):/workdir" trufflesecurity/trufflehog:latest "git file:///workdir --since-commit HEAD --fail" ; docker logs trufflehog 2>&1 | tee result-trufflehog.txt ; docker rm trufflehog'
+      language: system
+      stages: ["commit", "push"]
